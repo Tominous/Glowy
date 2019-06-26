@@ -11,7 +11,7 @@ var userManager = require('../userControllers/userManager')
 var startQueue = {};
 var config = configReader.readConfig();
 
-/*
+
 
 var serverInfoFile = configReader.rootPath() + '\config\config.json';
 var port = jf.readFile(serverInfoFile, function (err, currentServerInfo) {
@@ -23,7 +23,7 @@ var port = jf.readFile(serverInfoFile, function (err, currentServerInfo) {
 console.log(port);
 
 
-*/
+
 
 
 
@@ -222,7 +222,7 @@ exports.createproperties = function(username, server_Id, setram, servertype, res
 								"resource-pack-sha1= \n" +
 								"max-world-size=29999984 \n" +
 								'server-port=' + port + "\n" +
-								"debug=false \n" +
+								"debug=true \n" +
 								"server-ip= \n" +
 								"spawn-npcs=true";
 						
