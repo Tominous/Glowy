@@ -9,7 +9,7 @@ var serversetting = require('./src/fileBuilders/server_setting')
 var serv = require('http').createServer(app);
 
 //Initializing all the modules
-//var servercreation = require('./servercreation');
+var servercreation = require('./servercreation');
 var servercreator = require('./src/serverControllers/serverCreator.js');
 var servercontrol = require('./src/serverControllers/serverControl.js');
 var servercontrol = require('./src/serverControllers/ServerSetupCreator.js');
@@ -65,6 +65,6 @@ var ramtotal = bytesToSize(os.totalmem());
 
 console.log(ramtotal);
 
-//serversetting.amserverset("soul","adjanisdjnqwi",5,true);
-//serversetting.createproperties("sasd", "as", 1212, "server1112", false);
-//var numberOfSockets = Object.keys(socketIO.connected).length;
+serversetting.amserverset("soul","adjanisdjnqwi",5,true);
+serversetting.createproperties("sasd", "as", 1212, "server1112", false);
+var numberOfSockets = Object.keys(socketIO.connected).length;
