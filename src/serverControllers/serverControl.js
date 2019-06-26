@@ -31,10 +31,10 @@ io.sockets.on('connection', function (socket) {
 		console.log("get status");
         if (server != null) {
             socket.emit("statusON"); //server status ON
-			//console.log("status on");
+			console.log("status on");
         } else {
             socket.emit("statusOFF"); //server status OFF
-			//console.log("status off");
+			console.log("status off");
         }
     });
     socket.on('startServer', function (name, serverId) {
@@ -45,8 +45,8 @@ io.sockets.on('connection', function (socket) {
 			if (server == null) {
 				var poth = configReader.rootPath + '/servers/' + name + "/" + servername;
 				var server_ver = configReader.readServerInfo(name + "/" + servername).server; //this is call out for server version
-				//nconf.argv().env({ lowerCase: true }).file({ file: 'servers/' + name + '/' + servername + '/serverInfo.json' });
-				//xmax = nconf.get('ram');
+				nconf.argv().env({ lowerCase: true }).file({ file: 'servers/' + name + '/' + servername + '/serverInfo.json' });
+				xmax = nconf.get('ram');
 				var serverInfoFile = configReader.rootPath() + '/servers/' + name + '/' + servername + '/serverInfo.json';
 				 jf.readFile(serverInfoFile, function (err, currentServerInfo) {
 					var serverInfo = currentServerInfo;
@@ -68,26 +68,26 @@ io.sockets.on('connection', function (socket) {
 		}
     });
 	
-	/*    
+	    
 	socket.on('setram', function (name, ram) {
         var server = map.get(name);
         if (server == null) {
-			//var setramconfig = new Config('./servers/' + name + '/serverInfo.json');
-			//assert.ok(setramconfig.s('server.port') === 4201);
-			//configReader.readServerInfo(name).set('ram', ram);
-			//function setram() {
-			//	this.type = ram
-			//}
-			// new setram()
+			var setramconfig = new Config('./servers/' + name + '/serverInfo.json');
+			assert.ok(setramconfig.s('server.port') === 4201);
+			configReader.readServerInfo(name).set('ram', ram);
+			function setram() {
+				this.type = ram
+			}
+			 new setram()
 			nconf.argv().env({ lowerCase: true }).file({ file: 'servers/' + name + '/serverInfo.json' });
-			//nconf.use('ram', { file: 'path/to/a-new/config-file.json' });
+			nconf.use('ram', { file: 'path/to/a-new/config-file.json' });
 			nconf.remove('ram')
 			nconf.add({'ram': ram})
 			console.log('ram save: ' + nconf.get('ram'));
 			console.log("server " + name + " have " + ram + "M of ram update")
         }
     });
-	*/
+	
 	
     socket.on('command', function (name, serverId, cmd) {
 		var servername = name + serverId;
