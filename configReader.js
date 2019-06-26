@@ -12,6 +12,6 @@ exports.readServerInfo = function(name){
 }
 exports.rootPath = function(){
     var root = __dirname;
-    //console.log(root)
+    console.log(root)
     return root;
 }
